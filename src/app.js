@@ -6,20 +6,36 @@ class Msg {
     this.submitButton = submitButton;
   }
 
-  getMsg(){
-    this.messageInput = messageInput.value;    
-    const messageText = document.createTextNode(messageInput);
+  getMsg(){    
+    this.messageInput = messageInput.value;
+    const messageText = document.createTextNode(this.messageInput);
     const messageItem = document.createElement('li');
+
     messageItem.appendChild(messageText);
     messageList.appendChild(messageItem);
 
-    // console.log(messageInput)
-    // console.log(messageText)
+    return this;    
+  }
+
+  keypress(e){
+    const key = e.which || e.keyCode;
+
+    // const getMsgFunction = this.getMsg;
+
+    console.log('this.getMsg retorna isso: ' + this.getMsg)
+
+    if (key === 13) {
+      this.getMsg;
+      // return getMsgFunction;
+      // console.log(this.getMsg)
+    }
+
     return this;
   }
 
-  submitMsg(){
+  submitMsg(){    
     submitButton.addEventListener('click', this.getMsg);
+    messageInput.addEventListener('keypress', this.keypress);
     return this;
   }
 }
@@ -29,11 +45,10 @@ const messageList = document.getElementById('message-list');
 const submitButton = document.getElementById('submit-button');
 
 const message = new Msg(messageInput, messageList, submitButton);
-message.getMsg().submitMsg();
+message.submitMsg();
 
-console.log('Mensagem 1: ' + message)
-
-
+// console.log('message.submitMsg() retorna isso: ' + message.submitMsg())
+// console.log('message retorna isso: ' + message)
 
 // class Methods extends Msg {
 //   // function() {

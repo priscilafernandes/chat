@@ -33,7 +33,7 @@ class Msg {
 
       console.log('RETORNA: ' + getMsgMethod)
 
-      alert('valeu, valeu!')
+      // alert('valeu!')
       
       return getMsgMethod;
     }
@@ -43,8 +43,10 @@ class Msg {
 
   submitMsg(){    
     this.submitButton.addEventListener('click', this.getMsg);
-    this.messageInput.addEventListener('keypress', this.submitKey.bind(this));
-    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this.getMsg));    
+
+    this.messageInput.addEventListener('keypress', this.submitKey);
+    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this));
+    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this.getMsg));
     // this.messageInput.addEventListener('keypress', this.bind(this.submitKey, this.getMsg));
     
     return this;

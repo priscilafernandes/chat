@@ -5,13 +5,8 @@
   font-family: 'Comfortaa', cursive;
 }
 
-/* .title {
-  text-align: center;
-} */
-
 .messages {
-  width: 20em;  
-
+  width: 20em;
   justify-content: center;
   align-items: start;
 }
@@ -19,7 +14,6 @@
 .message-list {
   min-height: 10em;
   background-color: #f3f3f3;
-
   max-height: 20vh;
   list-style-type: none;
   padding: 2vw;
@@ -40,5 +34,6 @@
 }
 
 .message-input button {
-  
+  border: none;
+  text-decoration: none;
 }

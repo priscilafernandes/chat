@@ -1,12 +1,14 @@
 class Msg {
   constructor(messageInput, messageList, submitButton) {
-    this.id = Math.random(); // ou this.id++
     this.messageInput = messageInput;
     this.messageList = messageList;
     this.submitButton = submitButton;
+
+    this.getMsg = this.getMsg.bind(this);
+    this.submitKey = this.submitKey.bind(this);
   }
 
-  getMsg(){    
+  getMsg(){
     this.messageInput = messageInput.value;
     const messageText = document.createTextNode(this.messageInput);
     const messageItem = document.createElement('li');
@@ -14,28 +16,37 @@ class Msg {
     messageItem.appendChild(messageText);
     messageList.appendChild(messageItem);
 
-    return this;    
+    return this;
   }
 
-  keypress(e){
-    const key = e.which || e.keyCode;
+  // bind(scope, fn) {
+  //   return () => {
+  //     return fn.apply(scope, []);
+  //   }
+  // }
 
-    // const getMsgFunction = this.getMsg;
-
-    console.log('this.getMsg retorna isso: ' + this.getMsg)
+  submitKey(e){
+    const key = e.keyCode || e.which;
+    const getMsgMethod = this.getMsg;
 
     if (key === 13) {
-      this.getMsg;
-      // return getMsgFunction;
-      // console.log(this.getMsg)
-    }
 
+      console.log('RETORNA: ' + getMsgMethod)
+
+      alert('valeu, valeu!')
+      
+      return getMsgMethod;
+    }
+    
     return this;
   }
 
   submitMsg(){    
-    submitButton.addEventListener('click', this.getMsg);
-    messageInput.addEventListener('keypress', this.keypress);
+    this.submitButton.addEventListener('click', this.getMsg);
+    this.messageInput.addEventListener('keypress', this.submitKey.bind(this));
+    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this.getMsg));    
+    // this.messageInput.addEventListener('keypress', this.bind(this.submitKey, this.getMsg));
+    
     return this;
   }
 }
@@ -46,14 +57,3 @@ const submitButton = document.getElementById('submit-button');
 
 const message = new Msg(messageInput, messageList, submitButton);
 message.submitMsg();
-
-// console.log('message.submitMsg() retorna isso: ' + message.submitMsg())
-// console.log('message retorna isso: ' + message)
-
-// class Methods extends Msg {
-//   // function() {
-//   //   return this;
-//   // }  
-// }
-
-// const allMsg = [];

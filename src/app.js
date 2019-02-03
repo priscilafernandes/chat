@@ -3,12 +3,9 @@ class Msg {
     this.messageInput = messageInput;
     this.messageList = messageList;
     this.submitButton = submitButton;
-
-    this.getMsg = this.getMsg.bind(this);
-    this.submitKey = this.submitKey.bind(this);
   }
 
-  getMsg(){
+  getMsg() {
     this.messageInput = messageInput.value;
     const messageText = document.createTextNode(this.messageInput);
     const messageItem = document.createElement('li');
@@ -19,36 +16,22 @@ class Msg {
     return this;
   }
 
-  // bind(scope, fn) {
-  //   return () => {
-  //     return fn.apply(scope, []);
-  //   }
-  // }
-
-  submitKey(e){
-    const key = e.keyCode || e.which;
+  submitKey(event) {
+    const key = event.keyCode || event.which;
     const getMsgMethod = this.getMsg;
 
     if (key === 13) {
-
-      console.log('RETORNA: ' + getMsgMethod)
-
-      // alert('valeu!')
-      
+      console.log(getMsgMethod);
       return getMsgMethod;
     }
     
     return this;
   }
-
-  submitMsg(){    
+  
+  submitMsg() {    
     this.submitButton.addEventListener('click', this.getMsg);
-
     this.messageInput.addEventListener('keypress', this.submitKey);
-    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this));
-    // this.messageInput.addEventListener('keypress', this.submitKey.bind(this.getMsg));
-    // this.messageInput.addEventListener('keypress', this.bind(this.submitKey, this.getMsg));
-    
+
     return this;
   }
 }
